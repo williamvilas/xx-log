@@ -1,5 +1,7 @@
 <?php
 
+namespace LogFormatter\Providers;
+
 use Illuminate\Support\ServiceProvider;
 use LogFormatter\Contracts\FormatterInterface;
 use LogFormatter\Contracts\LoggerInterface;
