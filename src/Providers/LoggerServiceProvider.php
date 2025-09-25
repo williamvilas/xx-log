@@ -40,6 +40,6 @@ class LoggerServiceProvider extends ServiceProvider
         });
 
         // 3️⃣ Define este canal como default em tempo de execução
-        $this->app['config']->set('logging.default', 'logformatter');
+        //$this->app['config']->set('logging.default', 'logformatter');
     }
 }
