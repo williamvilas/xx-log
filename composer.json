@@ -21,7 +21,7 @@
     "phpunit/phpunit": "^9"
   },
   "scripts": {
-    "lint-format": "vendor/bin/php-cs-fixer fix -v --using-cache no src tests",
+    "lint": "vendor/bin/php-cs-fixer fix -v --using-cache no src tests",
     "unit-test": "vendor/bin/phpunit --testdox --coverage-text"
   },
   "minimum-stability": "dev",
