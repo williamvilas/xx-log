@@ -39,13 +39,15 @@ class JsonFormatter implements FormatterInterface
             ];
         }
 
+        $datetime = isset($record['datetime']) && $record['datetime'] instanceof \DateTimeInterface
+            ? $record['datetime']->format('c')
+            : date('c');
+
         return [
             'level_name' => $record['level_name'] ?? 'UNKNOWN',
             'message'    => $record['message'] ?? '',
             'context'    => $record['context'] ?? [],
-            'datetime'   => $record['datetime'] instanceof \DateTimeInterface
-                ? $record['datetime']->format('c')
-                : date('c'),
+            'datetime'   => $datetime,
         ];
     }
 }

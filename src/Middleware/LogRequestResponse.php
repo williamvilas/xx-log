@@ -3,21 +3,17 @@
 namespace LogFormatter\Middleware;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use LogFormatter\Helpers\RequestIdGenerator;
-use LogFormatter\Services\RequestLogger;
 
 class LogRequestResponse
 {
-    public function __construct(
-        private RequestLogger $logger
-    ) {}
-
     public function handle(Request $request, \Closure $next)
     {
-        $requestId = RequestIdGenerator::generate();
-        $request->attributes->set('requestId', $requestId);
+        $requestId = $request->header('Request-Id', RequestIdGenerator::generate());
+        $request->attributes->set('Request-Id', $requestId);
 
-        $this->logger->log('info', [
+        Log::info('Request via api', [
             'type'      => 'request',
             'requestId' => $requestId,
             'method'    => $request->getMethod(),
@@ -28,7 +24,7 @@ class LogRequestResponse
 
         $response = $next($request);
 
-        $this->logger->log('info', [
+        Log::info('Response via api', [
             'type'      => 'response',
             'requestId' => $requestId,
             'status'    => $response->getStatusCode(),
