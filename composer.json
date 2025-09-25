@@ -21,9 +21,7 @@
     "phpunit/phpunit": "^9"
   },
   "scripts": {
-    "lint-fix": "vendor/bin/php-cs-fixer fix -v --using-cache no --dry-run --stop-on-violation",
-    "lint-format": "vendor/bin/php-cs-fixer fix -v --using-cache no",
-    "lint-fix:commit": "vendor/bin/php-cs-fixer fix --quiet --config .php-cs-fixer.php --using-cache no $(printf -- '--path-mode=intersection\\n--\\n%s' \"$(git diff origin/master --name-only --diff-filter=ACMRTUXB)\")",
+    "lint-format": "vendor/bin/php-cs-fixer fix -v --using-cache no src tests",
     "unit-test": "vendor/bin/phpunit --testdox --coverage-text"
   },
   "minimum-stability": "dev",
