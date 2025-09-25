@@ -26,7 +26,7 @@
     "lint-fix:commit": "vendor/bin/php-cs-fixer fix --quiet --config .php-cs-fixer.php --using-cache no $(printf -- '--path-mode=intersection\\n--\\n%s' \"$(git diff origin/master --name-only --diff-filter=ACMRTUXB)\")",
     "unit-test": "vendor/bin/phpunit --testdox --coverage-text"
   },
-  "minimum-stability": "0.2.5",
+  "minimum-stability": "dev",
   "prefer-stable": true,
   "version": "0.2.5"
 }
