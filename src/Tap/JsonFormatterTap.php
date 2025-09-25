@@ -2,7 +2,8 @@
 
 namespace LogFormatter\Tap;
 
-use Monolog\Logger;
+use Illuminate\Log\Logger as IlluminateLogger;
+use Monolog\Logger as MonologLogger;
 use LogFormatter\Contracts\FormatterInterface;
 
 class JsonFormatterTap
@@ -14,9 +15,12 @@ class JsonFormatterTap
         $this->formatter = $formatter;
     }
 
-    public function __invoke(Logger $logger): void
+    public function __invoke(IlluminateLogger $logger): void
     {
-        foreach ($logger->getHandlers() as $handler) {
+        /** @var MonologLogger $monolog */
+        $monolog = $logger->getLogger();
+
+        foreach ($monolog->getHandlers() as $handler) {
             $handler->setFormatter($this->formatter);
         }
     }
