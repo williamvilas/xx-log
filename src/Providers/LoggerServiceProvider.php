@@ -3,7 +3,7 @@
 namespace LogFormatter\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Monolog\Formatter\FormatterInterface;
+use LogFormatter\Contracts\FormatterInterface;
 use LogFormatter\Contracts\LoggerInterface;
 use LogFormatter\Formatters\JsonFormatter;
 use LogFormatter\Services\RequestLogger;
