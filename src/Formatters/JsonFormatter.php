@@ -2,13 +2,12 @@
 
 namespace LogFormatter\Formatters;
 
-use LogFormatter\Contracts\FormatterInterface;
-
+use Monolog\Formatter\FormatterInterface;
 use Monolog\LogRecord;
 
 class JsonFormatter implements FormatterInterface
 {
-    public function format(LogRecord|array $record): string
+    public function format($record): string
     {
         $data = $this->normalizeRecord($record);
 
